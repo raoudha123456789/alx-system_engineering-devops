@@ -1,0 +1,12 @@
+#!/bin/bash
+readarray -t words
+declare -A freq
+for word in "${words[@]}"; do
+    ((freq[$word]++))
+done
+for word in "${!freq[@]}"; do
+    if [[ ${freq[$word]} -eq 1 ]]; then
+        echo "$word"
+    fi
+done | sort
+
